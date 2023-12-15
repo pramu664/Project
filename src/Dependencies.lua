@@ -12,6 +12,9 @@ require "src/StateMachine"
 require "src/states/BaseState"
 require "src/states/menuState"
 
+require "src/player"
+require "src/ball"
+
 
 --[[
 gTextures = {
