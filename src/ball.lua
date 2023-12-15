@@ -6,15 +6,15 @@ function ball:init()
     VIRTUAL_WIDTH/4,
     VIRTUAL_HEIGHT/2,
     0,
-    0
+    0,
+    0.01
   )
-  self.rigidbody:addSpring(gPlayer.rigidbody, 0.001, 3)
+  self.rigidbody:addSpring(gPlayer.rigidbody, 0.5, 20)
+  self.rigidbody.friction = 0.9
 end
 
 function ball:update()
- 
   self.rigidbody:update()
-
 end
 
 

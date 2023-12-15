@@ -24,6 +24,7 @@ function love.load()
   gPlayer = player()
   gBall = ball()
   gEnemy = enemy()
+  gGun = gun()
 
 end
 
@@ -35,6 +36,7 @@ function love.update(dt)
   gBall:update()
   gPlayer:update()
   gEnemy:update()
+  gGun:update()
   
 end
 
@@ -51,6 +53,7 @@ function love.draw()
   gBall:render()
   gPlayer:render()
   gEnemy:render()
+  gGun:render()
 
   push:finish()
 end

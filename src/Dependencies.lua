@@ -15,6 +15,7 @@ require "src/states/menuState"
 require "src/player"
 require "src/ball"
 require "src/enemy"
+require "src/gun"
 
 
 --[[
