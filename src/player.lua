@@ -1,6 +1,7 @@
 player = Class{}
 
 function player:init()
+  
   self.texture = love.graphics.newImage("graphics/player.png")
   self.rigidbody = particle:create(
     VIRTUAL_WIDTH/2,

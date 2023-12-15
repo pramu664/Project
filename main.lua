@@ -23,6 +23,7 @@ function love.load()
   -- new
   gPlayer = player()
   gBall = ball()
+  gEnemy = enemy()
 
 end
 
@@ -33,6 +34,7 @@ function love.update(dt)
   -- new
   gBall:update()
   gPlayer:update()
+  gEnemy:update()
   
 end
 
@@ -48,6 +50,7 @@ function love.draw()
   -- new
   gBall:render()
   gPlayer:render()
+  gEnemy:render()
 
   push:finish()
 end
