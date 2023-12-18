@@ -17,14 +17,17 @@ function love.load()
   gStateMachine:change("menu")
 
   
-  -- new
   backgroundTexture = love.graphics.newImage("graphics/background.png")
 
-  -- new
   gPlayer = player()
   gBall = ball()
-  gEnemy = enemy()
   gGun = gun()
+
+  -- new
+  gEnemies = {}
+  for i = 1, 10, 1 do 
+    table.insert(gEnemies, enemy())
+  end
 
 end
 
@@ -32,12 +35,15 @@ function love.update(dt)
   gStateMachine:update(dt)
 
 
-  -- new
   gBall:update()
   gPlayer:update()
-  gEnemy:update()
   gGun:update()
   
+  -- new
+  for _, enemy in ipairs(gEnemies) do
+    enemy:update()
+  end
+
 end
 
 function love.draw()
@@ -45,15 +51,17 @@ function love.draw()
 
   -- gStateMachine:render()
 
-  -- new
   love.graphics.draw(backgroundTexture)
 
 
-  -- new
   gBall:render()
   gPlayer:render()
-  gEnemy:render()
   gGun:render()
+
+  -- new
+  for _, enemy in ipairs(gEnemies) do
+    enemy:render()
+  end
 
   push:finish()
 end
