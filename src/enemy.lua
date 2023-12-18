@@ -11,6 +11,12 @@
 enemy = Class{}
 
 -- new
+enemyState = {
+  idle = false,
+  chasing = false,
+  attacking = false
+}
+
 local attackDstThreshold = 50
 
 function enemy:init()
@@ -21,6 +27,7 @@ function enemy:init()
     0,
     0
   )
+  enemyState.chasing = true -- new
 end
 
 function enemy:update()
@@ -30,14 +37,20 @@ function enemy:update()
 
   -- new
   if distanceToPlayer < attackDstThreshold then
+
     self.rigidbody.vx = 0
     self.rigidbody.vy = 0
+ 
+    enemyState.chasing = false -- new
+    enemyState.attacking = true -- new
 
   else
 
     angleToPlayer = self.rigidbody:angleTo(gPlayer.rigidbody)
     self.rigidbody.vx = math.cos(angleToPlayer) * math.random(0.1, ENEMY_SPEED)
     self.rigidbody.vy = math.sin(angleToPlayer) * math.random(0.1, ENEMY_SPEED)
+
+    enemyState.attacking = false --  new
 
   end
   --]]
@@ -50,3 +63,4 @@ end
 function enemy:render()
   love.graphics.draw(self.texture, self.rigidbody.x, self.rigidbody.y)
 end
+

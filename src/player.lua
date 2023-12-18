@@ -14,6 +14,7 @@ end
 
 function player:update()
 
+
   if love.keyboard.isDown("w") then
     self.rigidbody.y = self.rigidbody.y - PLAYER_SPEED
   end
