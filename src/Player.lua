@@ -1,6 +1,6 @@
-player = Class{}
+Player = Class{}
 
-function player:init()
+function Player:init()
   
   self.texture = love.graphics.newImage("graphics/player.png")
   self.rigidbody = particle:create(
@@ -12,8 +12,8 @@ function player:init()
 
 end
 
-function player:update()
 
+function Player:update()
 
   if love.keyboard.isDown("w") then
     self.rigidbody.y = self.rigidbody.y - PLAYER_SPEED
@@ -33,6 +33,6 @@ function player:update()
 
 end
 
-function player:render()
+function Player:render()
   love.graphics.draw(self.texture, self.rigidbody.x, self.rigidbody.y)
 end

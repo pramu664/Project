@@ -1,16 +1,5 @@
---[[
--- IDEAS (WHAT IDEAS I CAN IMPLEMENT RIGHT NOW ?)
---
--- Giving a signal for player for enemy instantiation position before enemy instantiate.
--- Make the enemy stop in radius of distance
--- Lunge attack
--- Enemy instantiate outside of the window
---
---]]
+Enemy = Class{}
 
-enemy = Class{}
-
--- new
 enemyState = {
   idle = false,
   chasing = false,
@@ -19,7 +8,7 @@ enemyState = {
 
 local attackDstThreshold = 50
 
-function enemy:init()
+function Enemy:init()
   self.texture = love.graphics.newImage("graphics/enemy.png")
   self.rigidbody = particle:create(
     math.random(VIRTUAL_WIDTH, VIRTUAL_WIDTH + 20),
@@ -27,22 +16,20 @@ function enemy:init()
     0,
     0
   )
-  enemyState.chasing = true -- new
+  enemyState.chasing = true 
 end
 
-function enemy:update()
+function Enemy:update()
 
-  -- new
   distanceToPlayer = self.rigidbody:distanceTo(gPlayer.rigidbody)
 
-  -- new
   if distanceToPlayer < attackDstThreshold then
 
     self.rigidbody.vx = 0
     self.rigidbody.vy = 0
  
-    enemyState.chasing = false -- new
-    enemyState.attacking = true -- new
+    enemyState.chasing = false 
+    enemyState.attacking = true 
 
   else
 
@@ -50,17 +37,16 @@ function enemy:update()
     self.rigidbody.vx = math.cos(angleToPlayer) * math.random(0.1, ENEMY_SPEED)
     self.rigidbody.vy = math.sin(angleToPlayer) * math.random(0.1, ENEMY_SPEED)
 
-    enemyState.attacking = false --  new
+    enemyState.attacking = false
 
   end
-  --]]
 
 
   self.rigidbody:update()
   
 end
 
-function enemy:render()
+function Enemy:render()
   love.graphics.draw(self.texture, self.rigidbody.x, self.rigidbody.y)
 end
 

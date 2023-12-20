@@ -1,7 +1,7 @@
-ball = Class{}
+Dog = Class{}
 
-function ball:init()
-  self.texture = love.graphics.newImage("graphics/ball.png")
+function Dog:init()
+  self.texture = love.graphics.newImage("graphics/Dog.png")
   self.rigidbody = particle:create(
     VIRTUAL_WIDTH/4,
     VIRTUAL_HEIGHT/2,
@@ -13,11 +13,11 @@ function ball:init()
   self.rigidbody.friction = 0.9
 end
 
-function ball:update()
+function Dog:update()
   self.rigidbody:update()
 end
 
 
-function ball:render()
+function Dog:render()
   love.graphics.draw(self.texture, self.rigidbody.x, self.rigidbody.y)
 end
