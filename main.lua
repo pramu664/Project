@@ -33,6 +33,7 @@ end
 
 function love.update(dt)
 
+
   -- gStateMachine:update(dt)
 
   gBall:update()
@@ -40,7 +41,20 @@ function love.update(dt)
   
   for _, enemy in ipairs(gEnemies) do
     enemy:update()
+
+    ---[[ new 3
+    if utils.rect_in_rect(gPlayer, enemy) then
+      print("Collision")
+    else
+      print("No Collision")
+    end
+    --]]
+
   end
+
+
+
+
 
 end
 

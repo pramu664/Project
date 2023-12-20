@@ -10,10 +10,22 @@ function Player:init()
     0
   )
 
+  ---[[ new 1
+  self.width = self.texture:getWidth()
+  self.height = self.texture:getHeight()
+  self.x = self.rigidbody.x
+  self.y = self.rigidbody.y
+  --]]
+
 end
 
 
 function Player:update()
+
+  ---[[ new 6
+  self.x = self.rigidbody.x
+  self.y = self.rigidbody.y
+  --]]
 
   if love.keyboard.isDown("w") then
     self.rigidbody.y = self.rigidbody.y - PLAYER_SPEED
@@ -35,4 +47,10 @@ end
 
 function Player:render()
   love.graphics.draw(self.texture, self.rigidbody.x, self.rigidbody.y)
+
+  ---[[ new 4
+  love.graphics.setColor({1, 0, 0})
+  love.graphics.rectangle("line", self.rigidbody.x, self.rigidbody.y, self.width, self.height)
+  --]]
+
 end

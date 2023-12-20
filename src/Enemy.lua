@@ -17,9 +17,23 @@ function Enemy:init()
     0
   )
   enemyState.chasing = true 
+
+  ---[[ new 2
+  self.width = self.texture:getWidth()
+  self.height = self.texture:getHeight()
+  self.x = self.rigidbody.x
+  self.y = self.rigidbody.y
+  --]]
+
 end
 
 function Enemy:update()
+
+
+  ---[[ new y
+  self.x = self.rigidbody.x
+  self.y = self.rigidbody.y
+  --]]
 
   distanceToPlayer = self.rigidbody:distanceTo(gPlayer.rigidbody)
 
@@ -48,5 +62,10 @@ end
 
 function Enemy:render()
   love.graphics.draw(self.texture, self.rigidbody.x, self.rigidbody.y)
+
+  ---[[ new 5
+  love.graphics.rectangle("line", self.rigidbody.x, self.rigidbody.y, self.width, self.height)
+  --]]
+
 end
 
