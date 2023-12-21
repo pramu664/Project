@@ -4,3 +4,4 @@ class = require "lib/class"
 utils = require "lib/utils"
 
 require "src/Projectile"
+require "src/Enemy"
