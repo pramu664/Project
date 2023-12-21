@@ -1,0 +1,14 @@
+enemy = class{}
+
+function enemy:init()
+  self.texture = love.graphics.newImage("enemy.png")
+  self.rigidbody = particle:create(WIDTH/2, HEIGHT/2, 0, 0)
+end
+
+function enemy:update()
+
+end
+
+function enemy:render()
+
+end
