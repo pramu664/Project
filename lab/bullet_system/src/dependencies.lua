@@ -5,3 +5,4 @@ utils = require "lib/utils"
 
 require "src/Projectile"
 require "src/Enemy"
+require "src/Player"
