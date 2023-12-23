@@ -10,8 +10,10 @@ function Player:init()
   self.height = self.texture:getHeight()
   self.speed = 1
   self.currentProjectile = Projectile(self.x, self.y)
+  self.score = 0
 
 end
+
 
 function Player:update()
 

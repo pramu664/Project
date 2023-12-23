@@ -21,6 +21,7 @@ function Projectile:update()
 
   if utils.rect_in_rect(self, theEnemy) then
     thePlayer.currentProjectile = nil
+    thePlayer.score = thePlayer.score + 1
   end
 
   self.x = self.rigidbody.x
