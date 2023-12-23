@@ -1,71 +1,38 @@
-Enemy = Class{}
-
-enemyState = {
-  idle = false,
-  chasing = false,
-  attacking = false
-}
-
-local attackDstThreshold = 50
+Enemy = class{}
 
 function Enemy:init()
-  self.texture = love.graphics.newImage("graphics/enemy.png")
-  self.rigidbody = particle:create(
-    math.random(VIRTUAL_WIDTH, VIRTUAL_WIDTH + 20),
-    math.random(0, VIRTUAL_HEIGHT),
-    0,
-    0
-  )
-  enemyState.chasing = true 
 
-  ---[[ new 2
-  self.width = self.texture:getWidth()
-  self.height = self.texture:getHeight()
+  math.randomseed(os.time())
+  self.rigidbody = particle:create(VIRTUAL_WIDTH/2, VIRTUAL_HEIGHT/2, 1, math.random(0, math.pi * 2))
+  self.texture = love.graphics.newImage("graphics/enemy.png")
+
   self.x = self.rigidbody.x
   self.y = self.rigidbody.y
-  --]]
+  self.width = self.texture:getWidth()
+  self.height = self.texture:getHeight()
+  self.bounce = -1
 
 end
 
 function Enemy:update()
 
-
-  ---[[ new y
   self.x = self.rigidbody.x
   self.y = self.rigidbody.y
-  --]]
-
-  distanceToPlayer = self.rigidbody:distanceTo(gPlayer.rigidbody)
-
-  if distanceToPlayer < attackDstThreshold then
-
-    self.rigidbody.vx = 0
-    self.rigidbody.vy = 0
- 
-    enemyState.chasing = false 
-    enemyState.attacking = true 
-
-  else
-
-    angleToPlayer = self.rigidbody:angleTo(gPlayer.rigidbody)
-    self.rigidbody.vx = math.cos(angleToPlayer) * math.random(0.1, ENEMY_SPEED)
-    self.rigidbody.vy = math.sin(angleToPlayer) * math.random(0.1, ENEMY_SPEED)
-
-    enemyState.attacking = false
-
-  end
-
 
   self.rigidbody:update()
-  
+
+  if self.rigidbody.x > VIRTUAL_WIDTH then
+    self.rigidbody.vx = self.rigidbody.vx * self.bounce
+  elseif self.rigidbody.x < 0 then
+      self.rigidbody.vx = self.rigidbody.vx * self.bounce
+  elseif self.rigidbody.y > VIRTUAL_HEIGHT then
+      self.rigidbody.vy = self.rigidbody.vy * self.bounce
+  elseif self.rigidbody.y < 0 then
+      self.rigidbody.vy = self.rigidbody.vy * self.bounce
+  end
+
 end
 
 function Enemy:render()
   love.graphics.draw(self.texture, self.rigidbody.x, self.rigidbody.y)
-
-  ---[[ new 5
-  love.graphics.rectangle("line", self.rigidbody.x, self.rigidbody.y, self.width, self.height)
-  --]]
-
 end
-

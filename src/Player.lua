@@ -1,56 +1,63 @@
-Player = Class{}
+Player = class{}
+
 
 function Player:init()
-  
-  self.texture = love.graphics.newImage("graphics/player.png")
-  self.rigidbody = particle:create(
-    VIRTUAL_WIDTH/2,
-    VIRTUAL_HEIGHT/2,
-    0,
-    0
-  )
 
-  ---[[ new 1
+  self.texture = love.graphics.newImage("graphics/player.png")
+  self.x = 0
+  self.y = 0
   self.width = self.texture:getWidth()
   self.height = self.texture:getHeight()
-  self.x = self.rigidbody.x
-  self.y = self.rigidbody.y
-  --]]
+  self.speed = 1
+  self.currentProjectile = Projectile(self.x, self.y)
 
 end
-
 
 function Player:update()
 
-  ---[[ new 6
-  self.x = self.rigidbody.x
-  self.y = self.rigidbody.y
-  --]]
+    if love.keyboard.isDown("left") then
+      self.currentProjectile = Projectile(self.x, self.y, math.pi)
+    end
 
-  if love.keyboard.isDown("w") then
-    self.rigidbody.y = self.rigidbody.y - PLAYER_SPEED
+    if love.keyboard.isDown("right") then
+      self.currentProjectile = Projectile(self.x, self.y, 0)
+    end
+
+  if self.currentProjectile ~= nil then
+    self.currentProjectile:update()
   end
 
-  if love.keyboard.isDown("a") then
-    self.rigidbody.x = self.rigidbody.x - PLAYER_SPEED
+
+
+  ---[[ new Player controller
+  if love.keyboard.isDown("w") then
+    self.y = self.y - self.speed
   end
 
   if love.keyboard.isDown("s") then
-    self.rigidbody.y = self.rigidbody.y + PLAYER_SPEED
+    self.y = self.y + self.speed
+  end
+
+  if love.keyboard.isDown("a") then
+    self.x = self.x - self.speed
   end
 
   if love.keyboard.isDown("d") then
-    self.rigidbody.x = self.rigidbody.x + PLAYER_SPEED
+    self.x = self.x + self.speed
+  end
+  --]]
+
+end
+
+
+function Player:render()
+  love.graphics.draw(self.texture, self.x, self.y)
+
+  if self.currentProjectile ~= nil then
+    self.currentProjectile:render()
   end
 
 end
 
-function Player:render()
-  love.graphics.draw(self.texture, self.rigidbody.x, self.rigidbody.y)
 
-  ---[[ new 4
-  love.graphics.setColor({1, 0, 0})
-  love.graphics.rectangle("line", self.rigidbody.x, self.rigidbody.y, self.width, self.height)
-  --]]
 
-end

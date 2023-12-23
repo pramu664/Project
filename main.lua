@@ -1,8 +1,7 @@
-require "src/Dependencies"
 require "src/constants"
+require "src/dependencies"
 
-
-love.window.setTitle("Catch me if you can")
+love.window.setTitle("Bullets")
 
 love.graphics.setDefaultFilter("nearest", "nearest")
 push:setupScreen(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT, {
@@ -11,68 +10,27 @@ push:setupScreen(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT, {
   fullscreen=false
 })
 
-
 function love.load()
 
-  gStateMachine = StateMachine{
-    ["menu"] = function() return menuState() end,
-  }
-  gStateMachine:change("menu")
-  
-  backgroundTexture = love.graphics.newImage("graphics/background.png")
-
-  gPlayer = Player()
-  gBall = Dog()
-
-  gEnemies = {}
-  for i = 1, 10, 1 do 
-    table.insert(gEnemies, Enemy())
-  end
+  theEnemy = Enemy()
+  thePlayer = Player()
 
 end
 
-function love.update(dt)
+function love.update()
 
 
-  -- gStateMachine:update(dt)
-
-  gBall:update()
-  gPlayer:update()
-  
-  for _, enemy in ipairs(gEnemies) do
-    enemy:update()
-
-    ---[[ new 3
-    if utils.rect_in_rect(gPlayer, enemy) then
-      print("Collision")
-    else
-      print("No Collision")
-    end
-    --]]
-
-  end
-
-
-
-
+  theEnemy:update()
+  thePlayer:update()
 
 end
 
 function love.draw()
   push:start()
 
-  -- gStateMachine:render()
-
-  love.graphics.draw(backgroundTexture)
-
-  gBall:render()
-  gPlayer:render()
-
-  for _, enemy in ipairs(gEnemies) do
-    enemy:render()
-  end
+  theEnemy:render()
+  thePlayer:render()
 
   push:finish()
 end
-
 

@@ -15,24 +15,17 @@ end
 
 function Player:update()
 
+    if love.keyboard.isDown("left") then
+      self.currentProjectile = Projectile(self.x, self.y, math.pi)
+    end
 
-  if love.keyboard.isDown("up") then
-    self.currentProjectile = Projectile(self.x, self.y, -math.pi/2)
+    if love.keyboard.isDown("right") then
+      self.currentProjectile = Projectile(self.x, self.y, 0)
+    end
+
+  if self.currentProjectile ~= nil then
+    self.currentProjectile:update()
   end
-
-  if love.keyboard.isDown("down") then
-    self.currentProjectile = Projectile(self.x, self.y, math.pi/2)
-  end
-
-  if love.keyboard.isDown("left") then
-    self.currentProjectile = Projectile(self.x, self.y, math.pi)
-  end
-
-  if love.keyboard.isDown("right") then
-    self.currentProjectile = Projectile(self.x, self.y, 0)
-  end
-
-  self.currentProjectile:update()
 
 
 
@@ -59,7 +52,11 @@ end
 
 function Player:render()
   love.graphics.draw(self.texture, self.x, self.y)
-  self.currentProjectile:render()
+
+  if self.currentProjectile ~= nil then
+    self.currentProjectile:render()
+  end
+
 end
 
 

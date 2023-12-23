@@ -27,9 +27,10 @@ function utils.range_intersect(min_a, max_a, min_b, max_b)
 end
 
 function utils.rect_in_rect(r0, r1) 
-  return utils.range_intersect(r0.x, r0.x + r0.width, r1.x, r1.x + r1.width) and
+  return utils.range_intersect(r0.x, r0.x + r0.width, r1.x, r1.x + r1.width)  and
   utils.range_intersect(r0.y, r0.y + r0.height, r1.y, r1.y + r1.width)
 end
+
 
 
 function utils.circle_rect(circle, rect)
