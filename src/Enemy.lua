@@ -21,15 +21,16 @@ function Enemy:update()
 
   self.rigidbody:update()
 
-  if self.rigidbody.x > VIRTUAL_WIDTH then
+  if self.rigidbody.x + self.width > VIRTUAL_WIDTH then
     self.rigidbody.vx = self.rigidbody.vx * self.bounce
   elseif self.rigidbody.x < 0 then
       self.rigidbody.vx = self.rigidbody.vx * self.bounce
-  elseif self.rigidbody.y > VIRTUAL_HEIGHT then
+  elseif self.rigidbody.y + self.height > VIRTUAL_HEIGHT then
       self.rigidbody.vy = self.rigidbody.vy * self.bounce
   elseif self.rigidbody.y < 0 then
       self.rigidbody.vy = self.rigidbody.vy * self.bounce
   end
+
 
 end
 

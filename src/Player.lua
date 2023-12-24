@@ -9,7 +9,7 @@ function Player:init()
   self.width = self.texture:getWidth()
   self.height = self.texture:getHeight()
   self.speed = 1
-  self.currentProjectile = Projectile(self.x, self.y)
+  self.currentProjectile = nil
   self.score = 0
 
 end
@@ -17,13 +17,31 @@ end
 
 function Player:update()
 
-    if love.keyboard.isDown("left") then
-      self.currentProjectile = Projectile(self.x, self.y, math.pi)
-    end
+  if self.x + self.width > VIRTUAL_WIDTH  then
+    self.x = VIRTUAL_WIDTH - self.width
+  end
+  
+  if self.y + self.height > VIRTUAL_HEIGHT then
+    self.y = VIRTUAL_HEIGHT - self.height
+  end
 
-    if love.keyboard.isDown("right") then
-      self.currentProjectile = Projectile(self.x, self.y, 0)
-    end
+  if self.x < 0 then 
+    self.x = 0
+  end
+
+  if self.y < 0 then
+    self.y = 0
+  end
+
+  if love.keyboard.isDown("left") then
+    self.currentProjectile = Projectile(self.x, self.y, math.pi)
+    gSounds.projectileInstantiation:play()
+  end
+
+  if love.keyboard.isDown("right") then
+    self.currentProjectile = Projectile(self.x, self.y, 0)
+    gSounds.projectileInstantiation:play()
+  end
 
   if self.currentProjectile ~= nil then
     self.currentProjectile:update()

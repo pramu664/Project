@@ -11,13 +11,14 @@ push:setupScreen(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT, {
 
 function love.load()
 
+
   gStateMachine = StateMachine{
     ["menu"] = function() return menuState() end,
+    ["playState"] = function() return playState() end,
   }
   gStateMachine:change("menu")
 
-  theEnemy = Enemy()
-  thePlayer = Player()
+  background = love.graphics.newImage("graphics/background.png")
 
 end
 
@@ -25,20 +26,13 @@ function love.update()
 
   gStateMachine:update()
 
-  if theEnemy ~= nil then
-    theEnemy:update()
-  end
-  thePlayer:update()
-
 end
 
 function love.draw()
   push:start()
 
+  love.graphics.draw(background)
   gStateMachine:render()
-
-  theEnemy:render()
-  thePlayer:render()
 
   push:finish()
 end

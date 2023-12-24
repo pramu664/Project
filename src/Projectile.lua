@@ -10,18 +10,16 @@ function Projectile:init(x, y, angle)
   self.y = self.rigidbody.y
   self.bounce = -1
 
-  self.color = {1, 1, 1}
 
 end
 
 
 function Projectile:update()
 
-  self.color = utils.rect_in_rect(self, theEnemy) and {1, 0, 0} or {1, 1, 1}
-
   if utils.rect_in_rect(self, theEnemy) then
     thePlayer.currentProjectile = nil
     thePlayer.score = thePlayer.score + 1
+    gSounds.projectileCollisionEnemy:play()
   end
 
   self.x = self.rigidbody.x
@@ -45,7 +43,6 @@ end
 
 function Projectile:render()
 
-  love.graphics.setColor(self.color)
   love.graphics.draw(self.texture, self.rigidbody.x, self.rigidbody.y)
 
 end
