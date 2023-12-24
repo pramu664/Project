@@ -31,6 +31,11 @@ function Enemy:update()
       self.rigidbody.vy = self.rigidbody.vy * self.bounce
   end
 
+  if utils.rect_in_rect(self, thePlayer) then
+    gSounds.gameOver:play()
+    gStateMachine:change("gameOverState")
+  end
+
 
 end
 

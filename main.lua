@@ -15,6 +15,7 @@ function love.load()
   gStateMachine = StateMachine{
     ["menu"] = function() return menuState() end,
     ["playState"] = function() return playState() end,
+    ["gameOverState"] = function() return gameOverState() end,
   }
   gStateMachine:change("menu")
 

@@ -9,6 +9,7 @@ require "src/StateMachine"
 require "src/states/BaseState"
 require "src/states/menuState"
 require "src/states/playState"
+require "src/states/gameOverState"
 
 require "src/Projectile"
 require "src/Enemy"
@@ -20,4 +21,5 @@ gSounds = {
     ['projectileCollisionEnemy'] = love.audio.newSource('sounds/projectileCollisionEnemy.wav', 'static'),
     ['enemyCollisionWalls'] = love.audio.newSource('sounds/enemyCollisionWalls.wav', 'static'),
     ['enemyCollisionPlayer'] = love.audio.newSource('sounds/enemyCollisionPlayer.wav', 'static'),
+  ["gameOver"] = love.audio.newSource("sounds/gameOver.wav", "static")
 }
