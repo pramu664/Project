@@ -2,8 +2,7 @@ Enemy = class{}
 
 function Enemy:init()
 
-  math.randomseed(os.time())
-  self.rigidbody = particle:create(VIRTUAL_WIDTH/2, VIRTUAL_HEIGHT/2, 1, math.random(0, math.pi * 2))
+  self.rigidbody = particle:create(VIRTUAL_WIDTH/2, VIRTUAL_HEIGHT/2, math.random(1, 3), math.random(0, math.pi * 2))
   self.texture = love.graphics.newImage("graphics/enemy.png")
 
   self.x = self.rigidbody.x
@@ -11,6 +10,7 @@ function Enemy:init()
   self.width = self.texture:getWidth()
   self.height = self.texture:getHeight()
   self.bounce = -1
+  self.health = 3
 
 end
 
@@ -36,8 +36,8 @@ function Enemy:update()
     gStateMachine:change("gameOverState")
   end
 
-
 end
+
 
 function Enemy:render()
   love.graphics.draw(self.texture, self.rigidbody.x, self.rigidbody.y)

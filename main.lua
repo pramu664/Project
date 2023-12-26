@@ -21,6 +21,8 @@ function love.load()
 
   background = love.graphics.newImage("graphics/background.png")
 
+  donut_texture = love.graphics.newImage("graphics/donut.png")
+
 end
 
 function love.update()
@@ -34,6 +36,8 @@ function love.draw()
 
   love.graphics.draw(background)
   gStateMachine:render()
+
+  love.graphics.draw(donut_texture, VIRTUAL_WIDTH/2, VIRTUAL_HEIGHT/2)
 
   push:finish()
 end

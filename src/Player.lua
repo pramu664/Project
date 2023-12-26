@@ -40,6 +40,7 @@ function Player:update()
 
   if love.keyboard.isDown("right") then
     self.currentProjectile = Projectile(self.x, self.y, 0)
+
     gSounds.projectileInstantiation:play()
   end
 

@@ -10,16 +10,22 @@ function Projectile:init(x, y, angle)
   self.y = self.rigidbody.y
   self.bounce = -1
 
-
 end
 
 
 function Projectile:update()
 
-  if utils.rect_in_rect(self, theEnemy) then
-    thePlayer.currentProjectile = nil
-    thePlayer.score = thePlayer.score + 1
-    gSounds.projectileCollisionEnemy:play()
+  for i = #gEnemies, 1, -1 do
+    if utils.rect_in_rect(self, gEnemies[i]) then
+
+      thePlayer.currentProjectile = nil
+      thePlayer.score = thePlayer.score + 1
+
+      gSounds.projectileCollisionEnemy:play()
+
+      table.remove(gEnemies, i)
+      gCurrentEnemyCount = gCurrentEnemyCount - 1
+    end
   end
 
   self.x = self.rigidbody.x
@@ -37,7 +43,6 @@ function Projectile:update()
   elseif self.rigidbody.y < 0 then
       self.rigidbody.vy = self.rigidbody.vy * self.bounce
   end
-
 
 end
 
