@@ -1,5 +1,7 @@
 playState = class{__includes = BaseState}
 
+gCurrentLevel = 1
+
 function playState:init()
   thePlayer = Player()
 
@@ -11,6 +13,10 @@ function playState:init()
   -- new
   gCurrentEnemyCount = ENEMY_COUNT
 
+  -- new
+  donut = Item(love.graphics.newImage("graphics/donut.png"))
+
+  print("change to play state")
 end
 
 function playState:update()
@@ -22,8 +28,16 @@ function playState:update()
   thePlayer:update()
 
   if gCurrentEnemyCount == 0 then
-    gStateMachine:change("gameOverState")
+    ENEMY_COUNT = ENEMY_COUNT + 1
+    gStateMachine:change("nextLevelState")
+    gIsPlayerPickupGun = false
+    gCurrentLevel = gCurrentLevel + 1
   end
+
+  if donut ~= nil then
+    donut:update()
+  end
+
 
 end
 
@@ -35,5 +49,9 @@ function playState:render()
   end
 
   thePlayer:render()
+
+  if donut ~= nil then
+    donut:render()
+  end
 
 end

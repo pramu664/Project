@@ -32,8 +32,9 @@ function Enemy:update()
   end
 
   if utils.rect_in_rect(self, thePlayer) then
-    gSounds.gameOver:play()
+    print("Player killed by an enemy")
     gStateMachine:change("gameOverState")
+    gSounds.gameOver:play()
   end
 
 end

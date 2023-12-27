@@ -3,6 +3,7 @@ gameOverState = class{__includes = BaseState}
 
 function gameOverState:init()
   self.texture = love.graphics.newImage("graphics/mainMenuBackground.png")
+  print("Gameover state")
 end
 
 function gameOverState:update(dt)

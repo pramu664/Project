@@ -11,18 +11,21 @@ push:setupScreen(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT, {
 
 function love.load()
 
+  --new temp
+  gIsPlayerPickupGun = false
 
   gStateMachine = StateMachine{
     ["menu"] = function() return menuState() end,
     ["playState"] = function() return playState() end,
     ["gameOverState"] = function() return gameOverState() end,
+    ["nextLevelState"] = function() return nextLevelState() end,
   }
   gStateMachine:change("menu")
 
   background = love.graphics.newImage("graphics/background.png")
 
-  donut_texture = love.graphics.newImage("graphics/donut.png")
 
+  print("Game starts")
 end
 
 function love.update()
@@ -36,8 +39,6 @@ function love.draw()
 
   love.graphics.draw(background)
   gStateMachine:render()
-
-  love.graphics.draw(donut_texture, VIRTUAL_WIDTH/2, VIRTUAL_HEIGHT/2)
 
   push:finish()
 end

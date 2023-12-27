@@ -25,6 +25,7 @@ function Projectile:update()
 
       table.remove(gEnemies, i)
       gCurrentEnemyCount = gCurrentEnemyCount - 1
+      print("Player killed an enemy")
     end
   end
 

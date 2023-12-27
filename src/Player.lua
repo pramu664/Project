@@ -33,19 +33,21 @@ function Player:update()
     self.y = 0
   end
 
-  if love.keyboard.isDown("left") then
-    self.currentProjectile = Projectile(self.x, self.y, math.pi)
-    gSounds.projectileInstantiation:play()
-  end
+  if gIsPlayerPickupGun then
+    if love.keyboard.isDown("left") then
+      self.currentProjectile = Projectile(self.x, self.y, math.pi)
+      gSounds.projectileInstantiation:play()
+    end
 
-  if love.keyboard.isDown("right") then
-    self.currentProjectile = Projectile(self.x, self.y, 0)
+    if love.keyboard.isDown("right") then
+      self.currentProjectile = Projectile(self.x, self.y, 0)
 
-    gSounds.projectileInstantiation:play()
-  end
+      gSounds.projectileInstantiation:play()
+    end
 
-  if self.currentProjectile ~= nil then
-    self.currentProjectile:update()
+    if self.currentProjectile ~= nil then
+      self.currentProjectile:update()
+    end
   end
 
 

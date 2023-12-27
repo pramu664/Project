@@ -10,10 +10,12 @@ require "src/states/BaseState"
 require "src/states/menuState"
 require "src/states/playState"
 require "src/states/gameOverState"
+require "src/states/nextLevelState"
 
 require "src/Projectile"
 require "src/Enemy"
 require "src/Player"
+require "src/Item"
 
 gSounds = {
     ['projectileInstantiation'] = love.audio.newSource('sounds/projectileInstantiation.wav', 'static'),
@@ -21,5 +23,6 @@ gSounds = {
     ['projectileCollisionEnemy'] = love.audio.newSource('sounds/projectileCollisionEnemy.wav', 'static'),
     ['enemyCollisionWalls'] = love.audio.newSource('sounds/enemyCollisionWalls.wav', 'static'),
     ['enemyCollisionPlayer'] = love.audio.newSource('sounds/enemyCollisionPlayer.wav', 'static'),
-  ["gameOver"] = love.audio.newSource("sounds/gameOver.wav", "static")
+  ["gameOver"] = love.audio.newSource("sounds/gameOver.wav", "static"),
+  ["itemPickup"] = love.audio.newSource("sounds/itemPickup.wav", "static"),
 }

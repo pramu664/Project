@@ -7,7 +7,7 @@ end
 
 function menuState:update(dt)
   if love.keyboard.isDown("return") then
-    gStateMachine:change("playState")
+    gStateMachine:change("nextLevelState")
   end
 end
 
