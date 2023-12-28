@@ -1,5 +1,8 @@
 Enemy = class{}
 
+gEnemyTransitionTexture = love.graphics.newImage("graphics/enemy_destroy_transition.png")
+gEnemyDestroyParticles = love.graphics.newImage("graphics/enemy_destroy_particles.png")
+
 function Enemy:init()
 
   self.rigidbody = particle:create(VIRTUAL_WIDTH/2, VIRTUAL_HEIGHT/2, math.random(1, 3), math.random(0, math.pi * 2))
@@ -33,8 +36,12 @@ function Enemy:update()
 
   if utils.rect_in_rect(self, thePlayer) then
     print("Player killed by an enemy")
+    gSounds.enemyCollisionPlayer:play()
     gStateMachine:change("gameOverState")
-    gSounds.gameOver:play()
+    gStateMachine:change("nextLevelState")
+    gCurrentLevel = 1
+    ENEMY_COUNT = 2
+    print("Change to level 1")
   end
 
 end

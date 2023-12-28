@@ -25,4 +25,6 @@ gSounds = {
     ['enemyCollisionPlayer'] = love.audio.newSource('sounds/enemyCollisionPlayer.wav', 'static'),
   ["gameOver"] = love.audio.newSource("sounds/gameOver.wav", "static"),
   ["itemPickup"] = love.audio.newSource("sounds/itemPickup.wav", "static"),
+  ["select"] = love.audio.newSource("sounds/selectSound.wav", "static"),
+  ["walk"] = love.audio.newSource("sounds/playerWalk.wav", "static"),
 }

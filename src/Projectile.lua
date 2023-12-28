@@ -21,8 +21,9 @@ function Projectile:update()
       thePlayer.currentProjectile = nil
       thePlayer.score = thePlayer.score + 1
 
+      gEnemies[i].texture = gEnemyTransitionTexture
+      gEnemies[i].texture = gEnemyDestroyParticles
       gSounds.projectileCollisionEnemy:play()
-
       table.remove(gEnemies, i)
       gCurrentEnemyCount = gCurrentEnemyCount - 1
       print("Player killed an enemy")

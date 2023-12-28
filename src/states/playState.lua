@@ -29,20 +29,18 @@ function playState:update()
 
   if gCurrentEnemyCount == 0 then
     ENEMY_COUNT = ENEMY_COUNT + 1
+    gCurrentLevel = gCurrentLevel + 1
     gStateMachine:change("nextLevelState")
     gIsPlayerPickupGun = false
-    gCurrentLevel = gCurrentLevel + 1
   end
 
   if donut ~= nil then
     donut:update()
   end
 
-
 end
 
 function playState:render()
-
 
   for _, enemy in ipairs(gEnemies) do
     enemy:render()

@@ -24,6 +24,11 @@ function love.load()
 
   background = love.graphics.newImage("graphics/background.png")
 
+  gFonts = {
+    ["small"] = love.graphics.newFont("fonts/font.ttf", 8),
+    ["medium"] = love.graphics.newFont("fonts/font.ttf", 16),
+    ["large"] = love.graphics.newFont("fonts/font.ttf", 32)
+  }
 
   print("Game starts")
 end
