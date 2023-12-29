@@ -42,6 +42,7 @@ function Enemy:update()
     gCurrentLevel = 1
     ENEMY_COUNT = 2
     print("Change to level 1")
+    gIsPlayerPickupGun = false
   end
 
 end

@@ -21,6 +21,7 @@ end
 
 function Player:update()
 
+
  
   if self.x + self.width > VIRTUAL_WIDTH  then
     self.x = VIRTUAL_WIDTH - self.width
