@@ -5,8 +5,9 @@ gEnemyDestroyParticles = love.graphics.newImage("graphics/enemy_destroy_particle
 
 function Enemy:init()
 
-  self.rigidbody = particle:create(VIRTUAL_WIDTH/2, VIRTUAL_HEIGHT/2, math.random(1, 3), math.random(0, math.pi * 2))
+  self.rigidbody = particle:create(VIRTUAL_WIDTH/2, VIRTUAL_HEIGHT/2, math.random(0.5, 2.5), math.random(0, math.pi * 2))
   self.texture = love.graphics.newImage("graphics/enemy.png")
+  self.textureLeft = love.graphics.newImage("graphics/enemy_left.png")
 
   self.x = self.rigidbody.x
   self.y = self.rigidbody.y
@@ -37,12 +38,16 @@ function Enemy:update()
   if utils.rect_in_rect(self, thePlayer) then
     print("Player killed by an enemy")
     gSounds.enemyCollisionPlayer:play()
+
     gStateMachine:change("gameOverState")
-    gStateMachine:change("nextLevelState")
+    -- gStateMachine:change("menu")
+    -- gStateMachine:change("gameOverState")
+    -- gStateMachine:change("nextLevelState")
     gCurrentLevel = 1
-    ENEMY_COUNT = 2
+    ENEMY_COUNT = 1
     print("Change to level 1")
     gIsPlayerPickupGun = false
+
   end
 
 end
@@ -50,4 +55,12 @@ end
 
 function Enemy:render()
   love.graphics.draw(self.texture, self.rigidbody.x, self.rigidbody.y)
+
+
+  if self.x > VIRTUAL_WIDTH/2 then
+    love.graphics.draw(self.textureLeft, self.rigidbody.x, self.rigidbody.y)
+  else
+    love.graphics.draw(self.texture, self.rigidbody.x, self.rigidbody.y)
+  end
+
 end

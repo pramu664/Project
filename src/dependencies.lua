@@ -18,11 +18,12 @@ require "src/Player"
 require "src/Item"
 
 gSounds = {
-    ['projectileInstantiation'] = love.audio.newSource('sounds/projectileInstantiation.wav', 'static'),
-    ['projectileCollisionWalls'] = love.audio.newSource('sounds/projectileCollisionWalls.wav', 'static'),
-    ['projectileCollisionEnemy'] = love.audio.newSource('sounds/projectileCollisionEnemy.wav', 'static'),
-    ['enemyCollisionWalls'] = love.audio.newSource('sounds/enemyCollisionWalls.wav', 'static'),
-    ['enemyCollisionPlayer'] = love.audio.newSource('sounds/enemyCollisionPlayer.wav', 'static'),
+  ["music"] = love.audio.newSource("sounds/music.wav", "static"),
+  ['projectileInstantiation'] = love.audio.newSource('sounds/projectileInstantiation.wav', 'static'),
+  ['projectileCollisionWalls'] = love.audio.newSource('sounds/projectileCollisionWalls.wav', 'static'),
+  ['projectileCollisionEnemy'] = love.audio.newSource('sounds/projectileCollisionEnemy.wav', 'static'),
+  ['enemyCollisionWalls'] = love.audio.newSource('sounds/enemyCollisionWalls.wav', 'static'),
+  ['enemyCollisionPlayer'] = love.audio.newSource('sounds/enemyCollisionPlayer.wav', 'static'),
   ["gameOver"] = love.audio.newSource("sounds/gameOver.wav", "static"),
   ["itemPickup"] = love.audio.newSource("sounds/itemPickup.wav", "static"),
   ["select"] = love.audio.newSource("sounds/selectSound.wav", "static"),

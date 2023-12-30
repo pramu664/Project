@@ -3,7 +3,7 @@ Projectile = class{}
 function Projectile:init(x, y, angle)
 
   self.rigidbody = particle:create(x or 0, y or 0, math.random(4, 8), angle or math.random(0, math.pi/2), 0.3)
-  self.texture = love.graphics.newImage("graphics/bullet.png")
+  self.texture = love.graphics.newImage("graphics/donut.png")
   self.width = self.texture:getWidth()
   self.height = self.texture:getHeight()
   self.x = self.rigidbody.x

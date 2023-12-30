@@ -30,6 +30,7 @@ function love.load()
     ["large"] = love.graphics.newFont("fonts/font.ttf", 32)
   }
 
+
   print("Game starts")
 end
 

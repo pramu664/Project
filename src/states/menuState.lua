@@ -4,6 +4,9 @@ function menuState:init()
   self.texture = love.graphics.newImage("graphics/mainMenuBackground.png")
   self.onStart = true
   self.onQuit = false
+
+  gSounds["music"]:play()
+  gSounds["music"]:setLooping(true)
 end
 
 function menuState:update(dt)
@@ -14,7 +17,7 @@ function menuState:update(dt)
     if love.keyboard.isDown("return") then   
         gStateMachine:change("nextLevelState")
         gSounds["select"]:play()
-    elseif love.keyboard.isDown("s") then
+    elseif love.keyboard.isDown("down") then
         self.onStart = false
         self.onQuit = true
         gSounds["select"]:play()
@@ -26,7 +29,7 @@ function menuState:update(dt)
       gSounds["select"]:play()
       love.event.quit()
 
-    elseif love.keyboard.isDown("w") then
+    elseif love.keyboard.isDown("up") then
       self.onStart = true
       self.onQuit = false
       gSounds["select"]:play()

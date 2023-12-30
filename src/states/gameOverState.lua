@@ -14,6 +14,8 @@ end
 
 function gameOverState:render()
   love.graphics.draw(self.texture)
+  love.graphics.setFont(gFonts["large"])
   love.graphics.printf("GAME OVER", 0, VIRTUAL_HEIGHT/5, VIRTUAL_WIDTH, "center")
-  love.graphics.printf("Press Enter to Restart", 0, VIRTUAL_HEIGHT/2, VIRTUAL_WIDTH, "center")
+  love.graphics.setFont(gFonts["small"])
+  love.graphics.printf("Enter Restart", 0, VIRTUAL_HEIGHT/2, VIRTUAL_WIDTH, "center")
 end
