@@ -7,12 +7,14 @@ function utils.circle_circle(c1, c2)
   return distance_between_two_points < ( c1.radius + c2.radius )
 end
 
+
 function utils.circle_point(circle, point)
   dx = circle.position:get_x() - point.position:get_x()
   dy = circle.position:get_y() - point.position:get_y()
   distance = math.sqrt(dx * dx + dy * dy)
   return distance < circle.radius 
 end
+
 
 function utils.in_range(value, min, max)
   return value >= math.min(min, max) and value <= math.max(max, min)
@@ -25,6 +27,7 @@ end
 function utils.range_intersect(min_a, max_a, min_b, max_b)
   return max_a >= min_b and min_a <= max_b
 end
+
 
 function utils.rect_in_rect(r0, r1) 
   return utils.range_intersect(r0.x, r0.x + r0.width, r1.x, r1.x + r1.width)  and
